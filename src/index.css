@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  direction: rtl;
+}
+
+body {
+  font-family: 'Inter var', system-ui, -apple-system, sans-serif;
+}
+
+.logo-main {
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.logo-main.loaded {
+  opacity: 1;
+}
+
+/* RTL specific adjustments */
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .ltr {
+  direction: ltr;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(0, -20px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
