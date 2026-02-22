@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Process, Product } from '../types';
 import ProductCard from '../components/ProductCard';
 
-const ProcessPage: React.FC = () => {
+const ProcessPage = () => {
   const { id } = useParams<{ id: string }>();
   const [process, setProcess] = useState<Process | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);

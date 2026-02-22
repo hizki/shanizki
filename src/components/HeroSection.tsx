@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
-import Logo from './Logo';
 import { supabase } from '../lib/supabase';
 
-const HeroSection: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+const HeroSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [logoUrl, setLogoUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const fetchLogoUrl = async () => {

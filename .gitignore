@@ -1,3 +1,19 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+
+# Environment — never commit secrets
+.env
+.env.*
+!.env.example
+
+# Bolt artifacts
+.bolt
+
+# Vite temp files
+vite.config.ts.timestamp-*
+
 # Logs
 logs
 *.log
@@ -6,17 +22,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj

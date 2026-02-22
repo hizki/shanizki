@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
-import imageCompression from 'browser-image-compression';
+import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { Loader2 } from 'lucide-react';
 
@@ -11,7 +9,7 @@ interface CatImage {
   order: number;
 }
 
-const Cats: React.FC = () => {
+const Cats = () => {
   const [images, setImages] = useState<CatImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
+import type React from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from '../lib/supabase';
 import type { Product, Process } from '../types';
-import { Trash2, Edit, Plus, X, Check, Loader2, Upload, Copy } from 'lucide-react';
+import { Trash2, Edit, Plus, X, Upload, Copy } from 'lucide-react';
 import CatGalleryAdmin from '../components/CatGalleryAdmin';
 
 type CopyField = 'what_is_it' | 'what_to_do' | 'instructions';
@@ -15,7 +15,6 @@ const Admin: React.FC = () => {
   const [editingProduct, setEditingProduct] = useState<Partial<Product> | null>(null);
   const [editingProcess, setEditingProcess] = useState<Partial<Process> | null>(null);
   const [selectedProcesses, setSelectedProcesses] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [showProductSelector, setShowProductSelector] = useState<CopyField | null>(null);
 
   useEffect(() => {
@@ -47,8 +46,6 @@ const Admin: React.FC = () => {
       setProcesses(processesData.data || []);
     } catch (error) {
       console.error('Error fetching data:', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -91,7 +88,7 @@ const Admin: React.FC = () => {
     if (!file) return;
 
     const fileId = uuidv4();
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from('product-images')
       .upload(`products/${fileId}.jpg`, file, { upsert: true });
 
@@ -205,7 +202,7 @@ const Admin: React.FC = () => {
         if (error) throw error;
 
         setProcesses(processes.map(p => 
-          p.id === processId ? { ...p, ...processData } : p
+          p.id === processId ? { ...p, name: name ?? p.name, description: description ?? p.description, further_reading_links: further_reading_links ?? p.further_reading_links } : p
         ));
       } else {
         const { data, error } = await supabase

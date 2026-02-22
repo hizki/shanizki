@@ -19,8 +19,8 @@ const Products: React.FC = () => {
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (product.what_is_it?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
       (product.what_to_do?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-      product.processes?.some(process => 
-        process.toLowerCase().includes(searchTerm.toLowerCase())
+      product.processes?.some(p => 
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
       ) || false
     );
     setFilteredProducts(results);

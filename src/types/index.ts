@@ -10,6 +10,7 @@ export interface Product {
   created_at?: string;
   updated_at?: string;
   processes?: Process[];
+  product_processes?: Array<{ process_id: string }>;
 }
 
 export interface Process {

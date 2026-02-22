@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import type { Product, Process } from '../types';
 import ProductCard from '../components/ProductCard';
 
-const ProductDetail: React.FC = () => {
+const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [processes, setProcesses] = useState<Process[]>([]);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {

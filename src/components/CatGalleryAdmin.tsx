@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import {
   DndContext,
@@ -7,6 +7,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  type DragEndEvent,
 } from '@dnd-kit/core';
 import {
   arrayMove,
@@ -17,7 +18,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import imageCompression from 'browser-image-compression';
 import { supabase } from '../lib/supabase';
-import { Loader2, Upload, X } from 'lucide-react';
+import { Loader2, Upload } from 'lucide-react';
 import SortableImage from './SortableImage';
 
 interface CatImage {
@@ -27,12 +28,11 @@ interface CatImage {
   order: number;
 }
 
-const CatGalleryAdmin: React.FC = () => {
+const CatGalleryAdmin = () => {
   const [images, setImages] = useState<CatImage[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isPageVisible, setIsPageVisible] = useState(true);
-  const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -77,10 +77,10 @@ const CatGalleryAdmin: React.FC = () => {
     })
   );
 
-  const onDragEnd = async (event: any) => {
+  const onDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     
-    if (active.id !== over.id) {
+    if (over && active.id !== over.id) {
       setImages((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over.id);

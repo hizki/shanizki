@@ -52,7 +52,8 @@ const Header: React.FC = () => {
           filter: 'key=eq.show_cats_page'
         },
         (payload) => {
-          setShowCatsPage(payload.new.value);
+          const record = payload.new as Record<string, unknown>;
+          setShowCatsPage(record.value as boolean);
         }
       )
       .subscribe();
