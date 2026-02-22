@@ -2,6 +2,15 @@
   command = "npm ci && npm run build"
   publish = "dist"
 
+[context.production.environment]
+  VITE_APP_ENV = "production"
+
+[context.staging.environment]
+  VITE_APP_ENV = "staging"
+
+[context.deploy-preview.environment]
+  VITE_APP_ENV = "staging"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -11,11 +11,13 @@ import Admin from './pages/Admin';
 import WeddingPhotos from './pages/WeddingPhotos';
 import Cats from './pages/Cats';
 import NotFound from './pages/NotFound';
+import StagingBanner from './components/StagingBanner';
 import './index.css';
 
 function App() {
   return (
     <Router>
+      <StagingBanner />
       <div className="flex flex-col min-h-screen" dir="rtl">
         <Header />
         <main className="flex-grow">
