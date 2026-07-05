@@ -6,6 +6,8 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Processes from './pages/Processes';
 import Process from './pages/Process';
+import Recipes from './pages/Recipes';
+import Recipe from './pages/Recipe';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import WeddingPhotos from './pages/WeddingPhotos';
@@ -27,6 +29,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/processes" element={<Processes />} />
             <Route path="/process/:id" element={<Process />} />
+            <Route path="/recipes" element={<Recipes />} />
+            <Route path="/recipe/:id" element={<Recipe />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/wedding-photos" element={<WeddingPhotos />} />

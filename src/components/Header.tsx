@@ -121,6 +121,15 @@ const Header: React.FC = () => {
                 תהליכי הכנה
               </Link>
             </li>
+            <li>
+              <Link
+                to="/recipes"
+                className="text-purple-900 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                מתכונים
+              </Link>
+            </li>
             {showCatsPage && (
               <li>
                 <Link 

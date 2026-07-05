@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 <li><Link to="/products" className="text-purple-200 hover:text-yellow-400 transition-colors">צנצנות</Link></li>
                 <li><Link to="/processes" className="text-purple-200 hover:text-yellow-400 transition-colors">שיטות הכנה</Link></li>
+                <li><Link to="/recipes" className="text-purple-200 hover:text-yellow-400 transition-colors">מתכונים</Link></li>
                 <li><Link to="/contact" className="text-purple-200 hover:text-yellow-400 transition-colors">צור קשר</Link></li>
               </ul>
             </div>
